@@ -5,8 +5,7 @@
    'hold' in seconds) and a target range (min–max). Reaching `max` on every
    set with clean form, two sessions in a row at that step, earns the next
    step. perSide: true means the number is per side.
-   Starting defaults only, not medical advice. Back-friendly: no loaded
-   spinal flexion.
+   Starting defaults only, not medical advice. No loaded spinal flexion.
    ===================================================================== */
 const SESSIONS_PER_WEEK = 3;
 const LADDERS = {
@@ -229,7 +228,7 @@ function renderHome() {
   <section class="card week">
     <div class="big">${n} <small>of ${SESSIONS_PER_WEEK} this week</small></div>
     <div class="dots">${weekDots(n)}</div>
-    <p class="muted">${n >= SESSIONS_PER_WEEK ? 'Week done. Well shown up.' : 'Tue & Thu upper + core · Sat full. Showing up is the win.'}</p>
+    <p class="muted">${n >= SESSIONS_PER_WEEK ? 'Week done. Well shown up.' : 'Three sessions a week. Showing up is the win.'}</p>
     <div class="stats"><div><b>${stk}</b><span>week${stk === 1 ? '' : 's'} in a row at 3/3</span></div>
     <div><b>${S.sessions.length}</b><span>sessions logged</span></div></div>
   </section>
@@ -246,7 +245,7 @@ function renderHome() {
   <section class="card"><h2>Recent sessions</h2>
     ${recent.length ? recent.map(x => `<a class="moverow" href="#log/${x.id}"><div><b>${fmtDate(x.date)}</b><br>
       <span class="muted">${typeName(x)}${x.run ? ' · run ✓' : ''} · ${Object.values(x.moves).filter(g => !g.skipped).length} movements · back: ${x.back}</span></div><span class="muted">Edit ›</span></a>`).join('')
-      : '<p class="muted">Nothing logged yet. Baseline test: Tue 20 Oct.</p>'}
+      : '<p class="muted">Nothing logged yet. Log your first session to get started.</p>'}
   </section>`;
 }
 
